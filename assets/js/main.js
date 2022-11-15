@@ -40,7 +40,9 @@ const DOM = {
 
       const cardHTML = `
         <div class="header-card">
-          <a href=""><i class="fab fa-behance"></i></a>
+          <a href="https://www.behance.net/${
+            user.nickname
+          }"><i class="fab fa-behance"></i></a>
         </div>
         <div class="content-card">
           <img
@@ -116,8 +118,10 @@ const DOM = {
         social.addEventListener("mouseenter", () => {
           const cardsHeader = card.querySelector(".header-card");
           const icon = card.querySelector(".header-card a i");
+          const link = card.querySelector(".header-card a");
 
           cardsHeader.style.backgroundColor = social.dataset.color;
+          link.setAttribute("href", social.href);
 
           setTimeout(() => {
             icon.classList = social.dataset.icon;
