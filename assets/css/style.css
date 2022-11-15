@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  font-family: "Raleway", sans-serif;
+  min-height: 100vh;
+  height: 100%;
+  background-color: #8484b3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  padding: 100px;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-group .user-card {
+  padding-bottom: 30px;
+  width: 300px;
+  border-radius: 5px;
+  background-color: rgb(247, 247, 247);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  -webkit-box-shadow: 0px 0px 33px 4px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 0px 0px 33px 4px rgba(0, 0, 0, 0.22);
+  box-shadow: 0px 0px 33px 4px rgba(0, 0, 0, 0.22);
+}
+
+.user-group .user-card .header-card {
+  padding: 20px;
+  width: 100%;
+  height: 150px;
+  background-color: #9fc1ff;
+  border-radius: 5px 5px 0 0;
+  transition: all 0.5s;
+}
+
+.user-group .user-card .header-card a i {
+  color: #fff;
+  font-size: 25px;
+  transition: all 0.5s;
+}
+
+.user-group .user-card .content-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -50px;
+}
+
+.user-group .user-card .content-card img {
+  display: block;
+  height: 100px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: solid 5px #fff;
+}
+
+.user-group .user-card .content-card .title-content {
+  font-family: "Handlee", cursive;
+  font-size: 24px;
+  text-align: center;
+  font-weight: 600;
+  color: #5f5f5f;
+}
+
+.user-group .user-card .content-card .content-card-text .text-content {
+  list-style: none;
+  text-align: center;
+  line-height: 20px;
+  color: #5f5f5fc2;
+  font-size: 14px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.user-group .user-card .content-card .content-card-text .social-content a {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+  color: #5f5f5fc2;
+  font-size: 14px;
+  border-radius: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  transition: all 0.5s;
+}
+
+.user-group
+  .user-card
+  .content-card
+  .content-card-text
+  .social-content
+  a:hover {
+  background-color: rgb(255, 255, 255);
+  color: #9fc1ff;
+}
+
+.user-group .user-card .content-card .content-card-text .social-content {
+  line-height: 25px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  list-style: none;
+}
+
+.user-group .user-card .content-card .social-card a {
+  padding: 8px;
+}
+
+.user-group .user-card .content-card .social-card {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.user-group .user-card .content-card .social-card a i {
+  font-size: 20px;
+  color: #5f5f5f;
+  transition: all 0.15s;
+}
+.user-group .user-card .content-card .social-card a i:hover {
+  color: #8484b3;
+}
+
+.divider {
+  margin: 0 auto;
+  width: 100%;
+  height: 1px;
+  background-color: #5f5f5f81;
+}
