@@ -40,7 +40,7 @@ const DOM = {
 
       const cardHTML = `
         <div class="header-card">
-          <a href="https://www.behance.net/${
+          <a target="_blank" href="https://www.behance.net/${
             user.nickname
           }"><i class="fab fa-behance"></i></a>
         </div>
