@@ -20,6 +20,7 @@ const fetching = {
         phone: user.phone,
         country: user.location.country,
         city: user.location.city,
+        gender: user.gender,
       };
     });
     const responseFiltered = responseMaped.filter((item) => {
@@ -34,6 +35,7 @@ const fetching = {
 
 const DOM = {
   insertCards(users) {
+    DOM.removeAtualCards();
     const usersData = users;
     usersData.forEach((user) => {
       const userGroup = document.querySelector(".user-group");
@@ -76,27 +78,27 @@ const DOM = {
             </ul>
           </div>
           <div class="social-card">
-            <a href="https://www.behance.net/${
+            <a target="_blank"  href="https://www.behance.net/${
               user.nickname
             }" data-icon="fab fa-behance" data-color="#9FC1FF"
               ><i class="fab fa-behance"></i
             ></a>
-            <a href="https://facebook.com/${
+            <a target="_blank" href="https://facebook.com/${
               user.nickname
             }" data-icon="fab fa-facebook-f" data-color="#ACC0E9"
               ><i class="fab fa-facebook-f"></i
             ></a>
-            <a href="https://twitter.com/${
+            <a target="_blank" href="https://twitter.com/${
               user.nickname
             }" data-icon="fab fa-twitter" data-color="#9AD9FF"
               ><i class="fab fa-twitter"></i
             ></a>
-            <a href="https://www.linkedin.com/${
+            <a target="_blank" href="https://www.linkedin.com/${
               user.nickname
             }" data-icon="fab fa-linkedin-in" data-color="#A4D0E7"
               ><i class="fab fa-linkedin-in"></i
             ></a>
-            <a href="https://dribbble.com/${
+            <a target="_blank" href="https://dribbble.com/${
               user.nickname
             }" data-icon="fab fa-dribbble" data-color="#FFC6E3"
               ><i class="fab fa-dribbble"></i
@@ -108,6 +110,16 @@ const DOM = {
       card.innerHTML = cardHTML;
       userGroup.appendChild(card);
     });
+  },
+  removeAtualCards() {
+    const allCards = document.querySelectorAll(".user-card");
+    allCards.forEach((item) => {
+      item.remove();
+    });
+  },
+  reInsertCards(users) {
+    DOM.removeAtualCards();
+    DOM.insertCards(users);
   },
   mouseInto() {
     const usersCards = document.querySelectorAll(".user-card");
@@ -147,6 +159,13 @@ const DOM = {
       });
     });
   },
+  filterUsersByGender(users, filter) {
+    return users.filter((user) => {
+      if (user.gender === filter) {
+        return user;
+      }
+    });
+  },
 };
 
 const response = await fetching.api("https://randomuser.me/api?results=20");
@@ -154,3 +173,47 @@ const users = fetching.users(response);
 
 DOM.insertCards(users);
 DOM.mouseInto();
+
+const inputsContainer = document.querySelector(".filter-container");
+inputsContainer.addEventListener("click", (element) => {
+  const eventClasssList = Array.from(element.target.classList);
+  if (eventClasssList.includes("not-marked")) {
+    element.target.classList.remove("not-marked");
+    element.target.classList.add("filter-marked");
+  }
+  if (eventClasssList.includes("filter-marked")) {
+    element.target.classList.remove("filter-marked");
+    element.target.classList.add("not-marked");
+  }
+});
+
+const genderFilterContainer = document.querySelector(".show-box");
+
+genderFilterContainer.addEventListener("click", (element) => {
+  const container = element.target.parentElement;
+  const filters = Array.from(container.querySelectorAll("a"));
+  const filtersTotal = filters.filter((item) => {
+    if (item.classList.contains("filter-marked")) {
+      return item;
+    }
+  });
+  if (filtersTotal.length == 0) {
+    if (element.target.classList.contains("not-marked")) {
+      DOM.reInsertCards(
+        DOM.filterUsersByGender(users, element.target.dataset.filter)
+      );
+    } else {
+      DOM.insertCards(users);
+    }
+  } else if (filtersTotal.length == 2) {
+    if (element.target.classList.contains("not-marked")) {
+      DOM.reInsertCards(
+        DOM.filterUsersByGender(users, element.target.dataset.filter)
+      );
+    } else {
+      DOM.insertCards(users);
+    }
+  } else {
+    DOM.insertCards(users);
+  }
+});

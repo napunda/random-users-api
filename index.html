@@ -25,11 +25,38 @@
       src="https://kit.fontawesome.com/1e69e5771b.js"
       crossorigin="anonymous"
     ></script>
-    <title>Random Users</title>
+    <title>Random Users Generator</title>
   </head>
 
   <body>
     <main>
+      <div class="filter-container">
+        <div class="show-box">
+          <h3>Exibir:</h3>
+          <div class="input-group">
+            <a data-filter="female" class="input-filter not-marked" href="#"
+              ><i class="fas fa-check"></i>Mulheres</a
+            >
+            <a data-filter="male" class="input-filter not-marked" href="#"
+              ><i class="fas fa-check"></i>Homens</a
+            >
+          </div>
+        </div>
+        <div class="order-box">
+          <h3>Ordenar por:</h3>
+          <div class="input-group">
+            <a class="input-filter not-marked" href="#"
+              ><i class="fas fa-check"></i>Nome</a
+            >
+            <a class="input-filter not-marked" href="#"
+              ><i class="fas fa-check"></i>Idade</a
+            >
+            <a class="input-filter not-marked" href="#"
+              ><i class="fas fa-check"></i>País</a
+            >
+          </div>
+        </div>
+      </div>
       <div class="user-group"></div>
     </main>
   </body>
